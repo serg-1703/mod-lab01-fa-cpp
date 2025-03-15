@@ -31,7 +31,38 @@ unsigned int faStr1(const char *str) {
 }
 
 unsigned int faStr2(const char *str) {
-    return 0;
+    unsigned int count = 0;
+    bool inWord = false;
+    bool isValidWord = false;
+
+    for (int i = 0; str[i] != '\0'; ++i) {
+        if (str[i] == ' ') {
+            if (inWord && isValidWord) {
+                ++count;
+            }
+            inWord = false;
+            isValidWord = false;
+        } else {
+            if (!inWord) {
+                inWord = true;
+                if (str[i] >= 'A' && str[i] <= 'Z') {
+                    isValidWord = true;
+                } else {
+                    isValidWord = false;
+                }
+            } else {
+                if (!(str[i] >= 'a' && str[i] <= 'z')) {
+                    isValidWord = false;
+                }
+            }
+        }
+    }
+
+    if (inWord && isValidWord) {
+        ++count;
+    }
+
+    return count;
 }
 
 unsigned int faStr3(const char *str) {
