@@ -4,7 +4,7 @@
 
 unsigned int faStr1(const char *str) {
     unsigned int count = 0;
-    bool inWord = false; 
+    bool inWord = false;
     bool hasDigit = false;
 
     for (int i = 0; str[i] != '\0'; ++i) {
